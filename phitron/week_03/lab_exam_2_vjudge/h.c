@@ -3,16 +3,17 @@ int main()
 {
     int n;
     scanf("%d", &n);
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (n == i)
-            printf("I hate it");
-        else if (n == i)
-            printf("I hate that I love it");
-        else if (n == i)
-            printf("I hate that I love that I hate it");
+        printf("I ");
+        if (i%2==0)
+            printf("hate ");
         else
-            continue;
+            printf("love ");
+        if (i +1< n)
+            printf("that ");
+        else
+            printf("it\n");
     }
 
     return 0;
