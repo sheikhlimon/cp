@@ -1,9 +1,11 @@
-#include<stdio.h>
+#include <stdio.h>
 int main()
 {
-    int a, b, c=0;
+    int a, b;
     scanf("%d %d", &a, &b);
-    for(int i = 0; i<)
-    if()
+    if (a > b)
+        printf("0");
+    else
+        printf("%d", b - a + 1);
     return 0;
 }
