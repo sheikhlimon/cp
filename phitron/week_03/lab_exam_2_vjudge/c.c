@@ -6,16 +6,16 @@ int main()
     if (s < t)
     {
         if (s <= x && x < t)
-            printf("Yes\n");
+            printf("Yes");
         else
-            printf("No\n");
+            printf("No");
     }
     else
     {
         if (x < t || s <= x)
-            printf("Yes\n");
+            printf("Yes");
         else
-            printf("No\n");
+            printf("No");
     }
     return 0;
 }
