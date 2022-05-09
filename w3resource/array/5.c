@@ -1,0 +1,46 @@
+/**
+ *	author : sheikhlimon
+ *	created : 09.05.2022 02:23:29
+ **/
+
+#include <stdio.h>
+int main()
+{
+    int arr1[100];
+    int arr2[100];
+    int arr3[100];
+    int n, mm = 1, ctr = 0;
+    int i, j;
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+    {
+        printf("element - %d : ", i);
+        scanf("%d", &arr1[i]);
+    }
+    for (i = 0; i < n; i++)
+    {
+        arr2[i] = arr1[i];
+        arr3[i] = 0;
+    }
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            if (arr1[i] == arr2[j])
+            {
+                arr3[j] = mm;
+                mm++;
+            }
+        }
+        mm = 1;
+    }
+    for (i = 0; i < n; i++)
+    {
+        if (arr3[i] == 2)
+        {
+            ctr++;
+        }
+    }
+    printf("duplicate elements found in the array is: %d \n", ctr);
+    return 0;
+}
