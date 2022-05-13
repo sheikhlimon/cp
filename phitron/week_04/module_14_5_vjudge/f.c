@@ -7,7 +7,7 @@
 int main()
 {
     long long n;
-    scanf("%d", &n);
+    scanf("%lld", &n);
     long long val = 1;
     for (long long i = 0; i <= 60; i++)
     {
