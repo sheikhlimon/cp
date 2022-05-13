@@ -7,12 +7,22 @@
 #include <string.h>
 int main()
 {
-    char s[1001];
+    int n;
+    scanf("%d", &n);
+    char s[n];
     scanf("%s", s);
-    if (s[0] >= 97)
+    int c = 0;
+    for (int i = 0; i < n; i++)
     {
-        s[0] = s[0] - 32;
+        if (s[0] < s[i] || s[0] > s[i])
+        {
+            s[0] = s[i];
+        }
+        if (s[i] == s[i + 1])
+        {
+            c++;
+        }
     }
-    printf("%s", s);
+    printf("%d", c);
     return 0;
 }
