@@ -1,9 +1,9 @@
 #include <stdio.h>
 int main()
 {
-    int T, i, n;
-    scanf("%d", &T);
-    for(i = 1; i <= T; i++) {
+    int t, n;
+    scanf("%d", &t);
+    while(t--) {
         scanf("%d", &n);
         if(n % 2 == 0)
         {
