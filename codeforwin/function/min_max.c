@@ -8,8 +8,14 @@
 #include <math.h>
 #include <stdbool.h>
 
-int max(int num1, int num2);
-int min(int num1, int num2);
+int max(int num1, int num2)
+{
+    return (num1 > num2) ? num1 : num2;
+}
+int min(int num1, int num2)
+{
+    return (num1 > num2) ? num2 : num1;
+}
 
 int main()
 {
@@ -25,16 +31,4 @@ int main()
     printf("\nMaximum = %d\n", maxi);
     printf("Minimum = %d", mini);
     return 0;
-}
-
-//find maximum between two numbers
-int max(int num1, int num2)
-{
-    return(num1 > num2) ? num1 : num2;
-}
-
-//find minimum between two numbers
-int min(int num1, int num2)
-{
-    return (num1 > num2) ? num2 : num1;
 }
