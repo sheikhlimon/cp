@@ -1,11 +1,9 @@
-#include<stdio.h>
-#include<string.h>
-
-
+#include <stdio.h>
+#include <string.h>
 
 int main()
 {
-     int a = 10;
+    int a = 10;
 
     int b = 20;
 
@@ -34,8 +32,6 @@ int main()
     b = 100;
 
     printf("%d %d %d\n", a, b, *p);
-
-    return 0;
 
     return 0;
 }
