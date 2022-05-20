@@ -1,12 +1,16 @@
-#include<stdio.h>
-char func(){
-    int x = 5;
-    double y = 5.0;
-    char *p=&x;
-    return p;
-    }
-int main(){
-    char px = func();
-    printf("%p", px);
-return 0;
+#include <stdio.h>
+
+char *Char(int a, double b)
+{
+    return "a";
+}
+
+int main()
+{
+    int a;
+    double b;
+    scanf("%d %lf", &a, &b);
+    printf("%s", Char(a, b));
+
+    return 0;
 }
