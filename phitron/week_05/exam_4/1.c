@@ -1,37 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+float square(float num)
+{
+    return (num * num);
+}
 
 int main()
 {
-    int a = 10;
-
-    int b = 20;
-
-    int *p = &a;
-
-    printf("%d %d %d\n", a, b, *p);
-
-    *p = 30;
-
-    printf("%d %d %d\n", a, b, *p);
-
-    *p = 20;
-
-    a = 50;
-
-    b = 10;
-
-    printf("%d %d %d\n", a, b, *p);
-
-    p = &b;
-
-    printf("%d %d %d\n", a, b, *p);
-
-    a = 20;
-
-    b = 100;
-
-    printf("%d %d %d\n", a, b, *p);
-
+    float n, sqr;
+    scanf("%f", &n);
+    sqr = square(n);
+    printf("%.2f", sqr);
     return 0;
 }
