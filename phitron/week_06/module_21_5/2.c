@@ -5,7 +5,8 @@ int main()
 {
     int n;
     scanf("%d", n);
-    int *a;
+    int a[n];
+    ptr
     int prod = 1;
     for (int i = 0; i < n; i++)
     {
