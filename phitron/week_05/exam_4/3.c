@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void gcd(int a, int b)
+int gcd(int a, int b)
 {
     int gcd;
     for (int i = 1; i <= a && i <= b; ++i)
@@ -9,16 +9,27 @@ void gcd(int a, int b)
         {
             gcd = i;
         }
-    printf("%d", gcd);
+    return gcd;
 }
 int main()
 {
-    int a;
-    int b;
-    for (int i = 1; i <= 10; i++)
+    int n = 10;
+    int arr[n];
+    for (int i = 0; i < n; ++i)
     {
-        scanf("%d %d", &a, &b);
-        gcd(a, b);
+        scanf("%d", &arr[i]);
     }
-    return 0;
+    int ans;
+    for (int i = 0; i < n - 1; ++i)
+    {
+        if (i == 0)
+        {
+            ans = gcd(arr[i], arr[i + 1]);
+        }
+        else
+        {
+            ans = gcd(ans, arr[i + 1]);
+        }
+    }
+    printf("%d", ans);
 }
