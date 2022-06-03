@@ -1,24 +1,24 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
-typedef struct 
+typedef struct
 {
     int min;
     int max;
-}minMax;
+} minMax;
 
 minMax getMinMax(int a, int b)
 {
     minMax s;
-    if(a > b)
+    if (a > b)
     {
         s.min = b;
         s.max = a;
     }
-    else 
+    else
     {
         s.min = a;
-        s.max = b; 
+        s.max = b;
     }
     return s;
 }
