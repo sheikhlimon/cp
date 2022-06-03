@@ -1,5 +1,20 @@
 #include <stdio.h>
 #include <string.h>
+#define INT_SIZE sizeof(int)
+#define INT_BITS INT_SIZE*2-1
+
+int rotateLeft(int a, unsigned int rotate)
+{
+    rotate%=INT_BITS;
+    int MSB;
+    while(rotate--)
+    {
+        MSB = a&(1<<INT_BITS);
+        a = a<<1;
+        a = a|MSB;
+    }
+    return a;
+}
 
 void DecToBin(int n)
 {
@@ -20,19 +35,9 @@ int main()
     int a, b;
 
     scanf("%d %d", &a, &b);
+    int x = rotateLeft(a, b);
 
-    DecToBin(a);
-
-    int x = a & (1 << b);
-
-    if (x)
-    {
-        printf("1\n");
-    }
-    else
-    {
-        printf("0\n");
-    }
+    DecToBin(x);
 
     return 0;
 }
