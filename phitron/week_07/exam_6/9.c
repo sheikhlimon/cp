@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #define INT_SIZE sizeof(int)
-#define INT_BITS INT_SIZE*2-1
+#define INT_BITS INT_SIZE * 2 - 1
 
 int rotateLeft(int a, unsigned int rotate)
 {
-    rotate%=INT_BITS;
+    rotate %= INT_BITS;
     int MSB;
-    while(rotate--)
+    while (rotate--)
     {
-        MSB = a&(1<<INT_BITS);
-        a = a<<1;
-        a = a|MSB;
+        MSB = a & (1 << INT_BITS);
+        a = a << 1;
+        a = a | MSB;
     }
     return a;
 }
