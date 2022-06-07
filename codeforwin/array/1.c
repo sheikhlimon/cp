@@ -9,7 +9,6 @@ int main()
 {
     int n, i;
     int arr[MAX_SIZE]; //declare an array of MAX_SIZE
-    
     //input array size
     printf("Enter size of array: ");
     scanf("%d", &n);

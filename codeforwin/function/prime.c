@@ -9,9 +9,8 @@
 int main()
 {
     int i, num, isPrime;
-
-    isPrime = 1;
-
+    printf("%d", )
+        isPrime = 1;
     printf("enter number: ");
     scanf("%d", &num);
 
@@ -23,7 +22,6 @@ int main()
             break;
         }
     }
-
     if (isPrime == 1 && num > 1)
     {
         printf("%d is prime number", num);
