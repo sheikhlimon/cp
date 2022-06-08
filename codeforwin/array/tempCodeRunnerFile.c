@@ -1,41 +1,50 @@
-/**
-*	author: sheikhlimon
-*	created: 2022.06.08
-**/
+#include <stdio.h>
 
-#include<stdio.h>
-#include<string.h>
-
-
-int main()
+void main()
 {
-    int n, num, pos;
-    int arr[100];
+    int arr1[50], n, i, j = 0, lrg, lrg2nd;
 
-    printf("enter element to insert: ");
-    scanf("%d", &num);
-    printf("enter element position  : ");
-    scanf("%d", &pos);
+    printf("\n\nFind the second largest element in an array :\n");
+    printf("-------------------------------------------------\n");
 
-    if(pos > size+1 || pos <= 0)
+    printf("Input the size of array : ");
+    scanf("%d", &n);
+    /* Stored values into the array*/
+    printf("Input %d elements in the array :\n", n);
+    for (i = 0; i < n; i++)
     {
-        printf("enter positon between 1 to %d", size)
+        printf("element - %d : ", i);
+        scanf("%d", &arr1[i]);
     }
-    else
+    /* find location of the largest element in the array */
+    //   lrg=arr1[0];
+    lrg = 0;
+    for (i = 0; i < n; i++)
     {
-        for(int i=n; i>=pos; i--)
+        if (lrg < arr1[i])
         {
-            arr[i] = arr[i-1];
-        }
-
-        arr[pos-1] = num;
-        n++;
-
-        printf("Array element after insert: ");
-        for(int i=0; i<n; i++)
-        {
-            printf("%d ", arr[i]);
+            lrg = arr1[i];
+            j = i;
         }
     }
-    return 0;
+
+    /* ignore the largest element and find the 2nd largest element in the array */
+    lrg2nd = 0;
+    for (i = 0; i < n; i++)
+    {
+        if (i == j)
+        {
+            i++; /* ignoring the largest element */
+            i--;
+        }
+        else
+        {
+            if (lrg2nd < arr1[i])
+            {
+                lrg2nd = arr1[i];
+            }
+        }
+    }
+
+    printf("The Second largest element in the array is :  %d \n\n", lrg2nd);
 }
