@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void string_copy(char str[], char str2[])
+void string_copy(char str2[], char str[])
 {
     int i=0;
     while(str[i] != '\0')
@@ -29,7 +29,7 @@ int main()
     char a[] = "ello";
     char b[10];
 
-    string_copy(a, b);
+    string_copy(b, a);
     printf("%s", b);
     return 0;
 }
