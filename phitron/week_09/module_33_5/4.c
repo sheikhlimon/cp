@@ -16,6 +16,7 @@ void string_copy(char str2[], char str[])
     }
     str2[i] = '\0';
 
+    //second method by using strlen function
     // int len = strlen(str);
     // for(int i=0; i<len; i++)
     // {
