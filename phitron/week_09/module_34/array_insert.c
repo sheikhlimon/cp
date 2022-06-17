@@ -8,16 +8,16 @@
 
 void insert(int *arr, int n, int pos, int val)
 {
-    for (int i = n - 1; i >= pos - 1; i--)
+    for (int i = n-1; i >= pos-1; i--)
     {
-        arr[i + 1] = arr[i];
+        arr[i+1] = arr[i];
     }
     arr[pos - 1] = val;
 }
 
 int main()
 {
-    int arr[] = {2, 3, 4, 6, 7};
+    int arr[5] = {10, 20, 30, 40, 50};
     int pos, val;
     scanf("%d %d", &pos, &val);
     insert(arr, 5, pos, val);
