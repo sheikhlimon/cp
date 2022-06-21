@@ -9,16 +9,19 @@
 int main()
 {
     int num;
-    FILE *myInput;
-    myInput = fopen("input.txt", "r");
+    FILE *inputFile;
+    inputFile = fopen("input.txt", "r");
+
+    FILE *outputFile;
+    outputFile = fopen("output.txt", "w");
     while (1)
     {
-        char ch = fgetc(myInput);
+        char ch = fgetc(inputFile);
         if (ch == EOF)
         {
             break;
         }
-        printf("%c", ch);
+        fputc(ch, outputFile);
     }
 
     return 0;
