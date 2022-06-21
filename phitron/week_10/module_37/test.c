@@ -10,7 +10,7 @@ int main()
 {
     int num;
     FILE *myInput;
-    myInput = fopen("", "r");
+    myInput = fopen("input.txt", "r");
     while (1)
     {
         char ch = fgetc(myInput);
