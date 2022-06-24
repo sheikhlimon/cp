@@ -36,7 +36,7 @@ bool check_array(int *arr, int n)
 
 int main()
 {
-    int arr[] = {1, 2, 3, 6, 4};
+    int arr[] = {1, 2, 3, 5, 4};
     bool ans = check_array(arr, 5);
 
     if (ans)
