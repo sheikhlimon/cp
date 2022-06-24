@@ -16,7 +16,7 @@ int main()
     {
         m = len / 2 + 1;
         if (c >= m)
-            break;  
+            break; 
         len--;
     }
     printf("%d", len);
