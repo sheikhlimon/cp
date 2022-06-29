@@ -7,25 +7,30 @@ int main()
     scanf("%d", &n);
     int ar[n];
     int mul;
-    scanf("%d", &mul);
+    int f = 0;
 
-    for(int i=0; i<n; i++)
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &ar[i]);
-        mul *= ar[i];
     }
-    for(int i=0; i<n; i++)
+    scanf("%d", &mul);
+    for (int i = 0; i < n - 1; i++)
     {
-        if(ar[i] != mul)
+        for (int j = i + 1; j < n; j++)
         {
-            printf("NO");
-            break;
-        }
-        else
-        {
-            printf("YES");
+            if (ar[i] * ar[j] == mul)
+            {
+                f = 1;
+            }
         }
     }
-
+    if (f == 1)
+    {
+        printf("YES");
+    }
+    else
+    {
+        printf("NO");
+    }
     return 0;
 }
