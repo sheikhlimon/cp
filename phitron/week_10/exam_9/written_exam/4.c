@@ -3,23 +3,41 @@
 
 int main()
 {
-    long long int n;
-    scanf("%lld", &n);
-    long long int arr[n];
-    for (int i = 0; i < n; i++)
+    long long int arr[100];
+    int freq[100];
+    int n, count; 
+    scanf("%d", &n);
+
+    for(int i=0; i<n; i++)
     {
         scanf("%lld", &arr[i]);
+        freq[i] = -1;
     }
-    int count[11] = {0};
-    for (int i = 0; i < n; i++)
+
+
+    for(int i=0; i<n; i++)
     {
-        count[arr[i]]++;
-    }
-    for (int i = 0; i <= 10; i++)
-    {
-        if (count[i] > 0)
+        count = 1;
+        for(int j=i+1; j<n; j++)
         {
-            printf("value -> %d, count -> %d\n", i, count[i]);
+            if(arr[i]==arr[j])
+            {
+                count++;
+                freq[j] = 0;
+            }
+        }
+
+        if(freq[i] != 0)
+        {
+            freq[i] = count;
+        }
+    }
+
+    for(int i=0; i<n; i++)
+    {
+        if(freq[i] != 0)
+        {
+            printf("value -> %lld, count -> %d\n", arr[i], freq[i]);
         }
     }
 
