@@ -7,7 +7,6 @@
 #include <string.h>
 
 void del(int *arr, int n, int pos)
-
 {
     for (int i = pos-1; i < n-1; i++)
     {
