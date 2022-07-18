@@ -17,10 +17,10 @@ int main()
         case 'i':
         case 'o':
         case 'u':
-        cout << "vowel";
+        cout << "vowel" << "\n";
         break;
         default:
-        cout<<"consonant";
+        cout<<"consonant"<< "\n";
         break;
     }
 
