@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using ll = long long;
+#define fastIO() (ios::sync_with_stdio(false), cin.tie(NULL));
 using namespace std;
 
 class person {
@@ -11,9 +12,7 @@ public:
 };
 
 int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-
+  fastIO();
   person p1;
 
   return 0;
