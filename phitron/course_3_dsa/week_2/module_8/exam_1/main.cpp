@@ -10,7 +10,7 @@ public:
     int total_tax;
 
 public:
-    //take input
+    // take input
     void input()
     {
         int n;
@@ -31,7 +31,6 @@ public:
              << setw(40) << "MAKE BILL" << endl;
         cout << "-----------------------------------------------------------" << endl;
         cout << "Item Code" << setw(25) << "Item Name" << setw(25) << "Item Price" << endl;
-        cout << "-----------------------------------------------------------" << endl;
         for (int i = 0; i <= 11; i++)
         {
             cout << endl
@@ -41,7 +40,7 @@ public:
              << endl;
     }
 
-    //make bill
+    // make bill
     void bill(int item_code[], int quantity[], int item_no, int table)
     {
         int amount = 0;
@@ -49,10 +48,8 @@ public:
         cout << endl
              << "" << setw(50) << "Bill Summary " << endl;
         cout << "---------------------------------------------------------------------------------------------------" << endl;
-        cout << "Table No " << table << endl;
-        cout << "---------------------------------------------------------------------------------------------------" << endl;
-        cout << "Item Code" << setw(20) << "Item Name" << setw(20) << "Item Price" << setw(20) << "Item Quantity" << setw(20) << "Total Price" << endl;
-        cout << "--------------------------------------------------------------------------------------------------";
+        cout << "Table No, : " << table << endl;
+        cout << "Item Code" << setw(20) << "Item Name" << setw(20) << "Item Price" << setw(20) << "Item Quantity" << setw(20) << "Total Price";
         for (int j = 0; j < item_no; j++)
         {
             for (int i = 0; i <= 11; i++)
@@ -69,12 +66,12 @@ public:
         total_tax = 0.05 * amount;
         int net_amount = amount + total_tax;
         cout << endl
-             << "Tax" << setw(85) << total_tax << endl;
+             << "TAX" << setw(85) << total_tax << endl;
         cout << "---------------------------------------------------------------------------------------------------" << endl;
-        cout << "Net Total" << setw(80) << net_amount;
+        cout << "Net Total" << setw(80) << net_amount << " Taka";
     }
 
-    //find if the item code match
+    // find if the item code match
     int find(int n)
     {
         int found = 0;
@@ -88,7 +85,7 @@ public:
         }
         if (found == 0)
         {
-            cout << "Invalid Item Code"<<endl;
+            cout << "Invalid Item Code" << endl;
         }
         return 0;
     }
