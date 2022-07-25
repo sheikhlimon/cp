@@ -26,31 +26,29 @@ int main()
     cout << "given array: ";
     printArray(arr, size);
 
-    int pos, value;
-    cout << "enter position of insetion: ";
+    int pos;
+    cout << "enter position of deletion: ";
     cin >> pos;
-    cout << "enter value: ";
-    cin >> value;
 
-    if (pos < 0 || pos > size)
+    if (pos < 0 || pos > size-1)
     {
         cout << "invalid index";
     }
     else
     {
-        // O(n)
-        // for (int i = size - 1; i >= n; i--)
-        // {
-        //     arr[i + 1] = arr[i];
-        // }
-
-        // O(1)
-        arr[size] = arr[pos];
-        arr[pos] = value;
+        if(pos == size-1) size--;
+        else
+        {
+            for(int i=pos+1; i<size; i++)
+            {
+                arr[i-1] = arr[i];
+            }
+            size--;
+        }
     }
 
-    cout << "array after insertion: ";
-    printArray(arr, size + 1);
+    cout << "array after deletion: ";
+    printArray(arr, size);
 
     return 0;
 }
