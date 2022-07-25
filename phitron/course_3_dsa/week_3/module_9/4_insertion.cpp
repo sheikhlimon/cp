@@ -38,10 +38,12 @@ int main()
     }
     else
     {
-        for (int i = size - 1; i >= size; i--)
-        {
-            arr[i + 1] = arr[i];
-        }
+        // for (int i = size - 1; i >= n; i--)
+        // {
+        //     arr[i + 1] = arr[i];
+        // }
+
+        arr[size] = arr[pos];
         arr[pos] = value;
     }
 
