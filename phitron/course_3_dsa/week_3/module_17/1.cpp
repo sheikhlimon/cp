@@ -46,7 +46,7 @@ void reverseListPrint(Node *head, int i)
         return;
     }
 
-    reverseListPrint(head->next, i+1);
+    reverseListPrint(head->next, i + 1);
     cout << head->value;
     if (i != 0)
     {
@@ -73,22 +73,29 @@ int main()
 {
     Node *head = NULL;
 
-    int n;
+    int value;
     cout << "Choice 1: Insertion at Head" << endl
          << "Choice 2: Insertion at Tail" << endl
-         << "Choice 3: Exit" << endl;
-    int choice = 2;
-    while (choice == 1 || choice == 2)
+         << "Choice 0: Exit" << endl
+         << endl;
+    cout << "Next Choice: ";
+    int choice;
+    cin >> choice;
+
+    while (choice != 0)
     {
         cout << "Enter the value: ";
-        cin >> n;
-        if (choice == 1)
+        cin >> value;
+        switch (choice)
         {
-            insertAtHead(head, n);
-        }
-        else if (choice == 2)
-        {
-            insertAtTail(head, n);
+        case 1:
+            insertAtHead(head, value);
+            break;
+        case 2:
+            insertAtTail(head, value);
+            break;
+        default:
+            break;
         }
         cout << "Next Choice: ";
         cin >> choice;
