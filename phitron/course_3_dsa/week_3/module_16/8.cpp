@@ -46,7 +46,7 @@ void reverseListPrint(Node *head, int i)
         return;
     }
 
-    reverseListPrint(head->next, i + 1);
+    reverseListPrint(head->next, i+1);
     cout << head->value;
     if (i != 0)
     {
