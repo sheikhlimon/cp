@@ -39,15 +39,19 @@ void insertAtTail(Node *&head, int val)
     temp->next = newNode;
 }
 
-void reverseListPrint(Node *head)
+void reverseListPrint(Node *head, int i)
 {
     if (head == NULL)
     {
         return;
     }
 
-    reverseListPrint(head->next);
-    cout << head->value << " ";
+    reverseListPrint(head->next, i + 1);
+    cout << head->value;
+    if (i != 0)
+    {
+        cout << " -> ";
+    }
 }
 
 void display(Node *n)
@@ -92,7 +96,7 @@ int main()
 
     display(head);
 
-    reverseListPrint(head);
+    reverseListPrint(head, 0);
 
     return 0;
 }
