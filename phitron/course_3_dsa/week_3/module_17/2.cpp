@@ -39,21 +39,6 @@ void insertAtTail(Node *&head, int val)
     temp->next = newNode;
 }
 
-void reverseListPrint(Node *head, int i)
-{
-    if (head == NULL)
-    {
-        return;
-    }
-
-    reverseListPrint(head->next, i + 1);
-    cout << head->value;
-    if (i != 0)
-    {
-        cout << " -> ";
-    }
-}
-
 void display(Node *n)
 
 {
@@ -68,6 +53,18 @@ void display(Node *n)
     }
     cout << endl
          << endl;
+}
+
+int countLength(Node *&head)
+{
+    int count = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
 }
 
 int main()
@@ -102,9 +99,11 @@ int main()
         cin >> choice;
     }
 
+    cout << endl
+         << "Linked List: ";
     display(head);
 
-    reverseListPrint(head, 0);
+    cout << "Length of the List: " << countLength(head) << endl;
 
     return 0;
 }
