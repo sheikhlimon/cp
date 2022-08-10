@@ -30,7 +30,9 @@ void insertAtTail(Node *&head, int val)
         head = newNode;
         return;
     }
+
     Node *temp = head;
+
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -55,7 +57,6 @@ void reverseListPrint(Node *head, int i)
 }
 
 void display(Node *n)
-
 {
     while (n != NULL)
     {
@@ -66,6 +67,7 @@ void display(Node *n)
         }
         n = n->next;
     }
+
     cout << endl
          << endl;
 }
