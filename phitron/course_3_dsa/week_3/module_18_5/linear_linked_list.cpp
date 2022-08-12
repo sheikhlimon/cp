@@ -93,6 +93,11 @@ int searchByValueUnique(Node *&head, int key)
     Node *temp = head;
     int count = 1;
 
+    if (temp == NULL)
+    {
+        return -1;
+    }
+
     while (temp->value != key)
     {
         if (temp->next == NULL)
