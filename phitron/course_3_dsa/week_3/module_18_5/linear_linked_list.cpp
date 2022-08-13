@@ -14,6 +14,11 @@ public:
     }
 };
 
+struct Test
+{
+    int position[1000];
+};
+
 void insertAtHead(Node *&head, int val);
 void insertAtTail(Node *&head, int val);
 void display(Node *n);
@@ -21,6 +26,9 @@ int countLength(Node *&head);
 void insertionAtSpecificPosition(Node *&head, int pos, int val);
 int searchByValueUnique(Node *&head, int key);
 void searchByValueDuplicate(Node *&head, int key);
+Test searchByValueDuplicateReturn(Node *&head, int key);
+void insertByValueUnique(Node *&head, int searchValue, int value);
+void deletionAtHead(Node *&head);
 
 void insertAtHead(Node *&head, int val)
 {
@@ -152,6 +160,48 @@ void searchByValueDuplicate(Node *&head, int key)
     }
 }
 
+Test searchByValueDuplicateReturn(Node *&head, int key)
+{
+    Node *temp = head;
+    Test T;
+    int k = 1;
+    int count = 1;
+
+    while (temp != NULL)
+    {
+        if (temp->value == key)
+        {
+            T.position[k] = count;
+            k++;
+        }
+        temp = temp->next;
+        count++;
+    }
+    T.position[0] = k;
+    return T;
+}
+
+void insertByValueUnique(Node *&head, int searchValue, int value)
+{
+    int position;
+    position = searchByValueUnique(head, searchValue);
+    insertionAtSpecificPosition(head, position + 1, value);
+}
+
+void deletionAtHead(Node *&head)
+{
+    Node *temp = head;
+    if (temp != NULL)
+    {
+        head = temp->next;
+        delete temp;
+    }
+    else
+    {
+        cout << "There is no Value in the Linked List" << endl;
+    }
+}
+
 int main()
 {
     Node *head = NULL;
@@ -168,6 +218,10 @@ int main()
          << "Choice 4: Search a value (Unique List)"
          << endl
          << "Choice 5: Search a value (Duplicate enabled List)"
+         << endl
+         << "Choice 6: Insertion by value (Unique List)"
+         << endl
+         << "Choice 7: Deletion at Head"
          << endl
          << "Choice 0: Exit"
          << endl
@@ -211,16 +265,37 @@ int main()
         case 5:
             cout << "Enter the value to search: ";
             cin >> value;
-            searchByValueDuplicate(head, value);
-            // pos = searchByValueUnique(head, value);
-            // if (pos != -1)
-            // {
-            //     cout << "The number is at Position: " << pos << endl;
-            // }
-            // else
-            // {
-            //     cout << "The number is not yet in the list" << endl;
-            // }
+            Test T;
+            T = searchByValueDuplicateReturn(head, value);
+            if (T.position[0] == 1)
+            {
+                cout << "The searched Value is not yet in the list" << endl;
+            }
+            else
+            {
+                int size = T.position[0];
+                cout << "The value is found at Position: ";
+                for (int i = 1; i < size; i++)
+                {
+                    cout << T.position[i];
+                    if (i < size - 1)
+                    {
+                        cout << ", ";
+                    }
+                }
+                cout << endl;
+            }
+            break;
+        case 6:
+            cout << "Enter the value to search: ";
+            int searchValue;
+            cin >> searchValue;
+            cout << "Enter the value to insert: ";
+            cin >> value;
+            insertByValueUnique(head, searchValue, value);
+            break;
+        case 7:
+            deletionAtHead(head);
             break;
         default:
             break;
