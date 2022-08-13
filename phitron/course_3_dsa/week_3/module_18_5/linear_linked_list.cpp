@@ -21,7 +21,7 @@ struct Test
 
 void insertAtHead(Node *&head, int val);
 void insertAtTail(Node *&head, int val);
-void display(Node *n);
+void display(Node *head);
 int countLength(Node *&head);
 void insertionAtSpecificPosition(Node *&head, int pos, int val);
 int searchByValueUnique(Node *&head, int key);
@@ -31,6 +31,7 @@ void insertByValueUnique(Node *&head, int searchValue, int value);
 void deletionAtHead(Node *&head);
 void deletionAtTail(Node *&head);
 void deletionAtSpecificPosition(Node *&head, int pos);
+void deletionByValueUnique(Node *&head, int value);
 
 void insertAtHead(Node *&head, int val)
 {
@@ -56,16 +57,16 @@ void insertAtTail(Node *&head, int val)
     temp->next = newNode;
 }
 
-void display(Node *n)
+void display(Node *head)
 {
-    while (n != NULL)
+    while (head != NULL)
     {
-        cout << n->value;
-        if (n->next != NULL)
+        cout << head->value;
+        if (head->next != NULL)
         {
             cout << " -> ";
         }
-        n = n->next;
+        head = head->next;
     }
     cout << endl;
 }
@@ -86,7 +87,6 @@ void insertionAtSpecificPosition(Node *&head, int pos, int val)
 {
     Node *temp = head;
     int i = 0;
-
     while (i < pos - 2)
     {
         temp = temp->next;
@@ -247,11 +247,9 @@ void deletionAtSpecificPosition(Node *&head, int pos)
         }
         else
         {
-            int i = 1;
-            while (i < pos - 1)
+            for (int i = 1; i < pos - 1; i++)
             {
                 temp = temp->next;
-                i++;
             }
             Node *delNode = temp->next;
             temp->next = delNode->next;
@@ -261,6 +259,21 @@ void deletionAtSpecificPosition(Node *&head, int pos)
     else
     {
         cout << "Position out of bound";
+    }
+}
+
+void deletionByValueUnique(Node *&head, int value)
+{
+    int pos;
+    pos = searchByValueUnique(head, value);
+
+    if (pos == -1)
+    {
+        cout << "Value not found in the linked list";
+    }
+    else
+    {
+        deletionAtSpecificPosition(head, pos);
     }
 }
 
@@ -289,6 +302,8 @@ int main()
          << endl
          << "Choice 9: Deletion at specific value"
          << endl
+         << "Choice 10: Deletion by value (Unique List)"
+         << endl
          << "Choice 0: Exit"
          << endl
          << endl;
@@ -316,6 +331,7 @@ int main()
             cout << "Enter the value: ";
             cin >> value;
             insertionAtSpecificPosition(head, pos, value);
+            break;
         case 4:
             cout << "Enter the value to search: ";
             cin >> value;
@@ -328,6 +344,7 @@ int main()
             {
                 cout << "The number is not yet in the list" << endl;
             }
+            break;
         case 5:
             cout << "Enter the value to search: ";
             cin >> value;
@@ -375,6 +392,12 @@ int main()
             cout << "Enter the Desired Position: ";
             cin >> pos;
             deletionAtSpecificPosition(head, pos);
+            break;
+        case 10:
+            cout << "Enter the value to delete: ";
+            int delValue;
+            cin >> delValue;
+            deletionByValueUnique(head, delValue);
             break;
         default:
             break;
