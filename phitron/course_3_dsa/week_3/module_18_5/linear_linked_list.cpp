@@ -30,6 +30,7 @@ Test searchByValueDuplicateReturn(Node *&head, int key);
 void insertByValueUnique(Node *&head, int searchValue, int value);
 void deletionAtHead(Node *&head);
 void deletionAtTail(Node *&head);
+void deletionAtSpecificPosition(Node *&head, int pos);
 
 void insertAtHead(Node *&head, int val)
 {
@@ -230,6 +231,39 @@ void deletionAtTail(Node *&head)
     }
 }
 
+void deletionAtSpecificPosition(Node *&head, int pos)
+{
+    Node *temp = head;
+
+    if (temp != NULL && pos <= countLength(head))
+    {
+        if (pos == 1)
+        {
+            deletionAtHead(head);
+        }
+        else if (pos == countLength(head))
+        {
+            deletionAtTail(head);
+        }
+        else
+        {
+            int i = 1;
+            while (i < pos - 1)
+            {
+                temp = temp->next;
+                i++;
+            }
+            Node *delNode = temp->next;
+            temp->next = delNode->next;
+            delete delNode;
+        }
+    }
+    else
+    {
+        cout << "Position out of bound";
+    }
+}
+
 int main()
 {
     Node *head = NULL;
@@ -252,6 +286,8 @@ int main()
          << "Choice 7: Deletion at Head"
          << endl
          << "Choice 8: Deletion at Tail"
+         << endl
+         << "Choice 9: Deletion at specific value"
          << endl
          << "Choice 0: Exit"
          << endl
@@ -329,6 +365,16 @@ int main()
             break;
         case 8:
             deletionAtTail(head);
+            break;
+        case 9:
+            if (head == NULL)
+            {
+                cout << "There is no value in the linked list";
+                break;
+            }
+            cout << "Enter the Desired Position: ";
+            cin >> pos;
+            deletionAtSpecificPosition(head, pos);
             break;
         default:
             break;
