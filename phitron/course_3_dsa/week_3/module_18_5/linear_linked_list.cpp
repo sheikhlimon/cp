@@ -29,6 +29,7 @@ void searchByValueDuplicate(Node *&head, int key);
 Test searchByValueDuplicateReturn(Node *&head, int key);
 void insertByValueUnique(Node *&head, int searchValue, int value);
 void deletionAtHead(Node *&head);
+void deletionAtTail(Node *&head);
 
 void insertAtHead(Node *&head, int val)
 {
@@ -65,8 +66,7 @@ void display(Node *n)
         }
         n = n->next;
     }
-    cout << endl
-         << endl;
+    cout << endl;
 }
 
 int countLength(Node *&head)
@@ -202,6 +202,34 @@ void deletionAtHead(Node *&head)
     }
 }
 
+void deletionAtTail(Node *&head)
+{
+    Node *temp = head;
+
+    if (temp != NULL && temp->next != NULL)
+    {
+        while (temp->next->next != NULL)
+        {
+            temp = temp->next;
+        }
+
+        Node *delNode = temp->next;
+        temp->next = NULL;
+        delete delNode;
+    }
+    else
+    {
+        if (temp == NULL)
+        {
+            cout << "There is no value in the Linked List";
+        }
+        else
+        {
+            deletionAtHead(head);
+        }
+    }
+}
+
 int main()
 {
     Node *head = NULL;
@@ -222,6 +250,8 @@ int main()
          << "Choice 6: Insertion by value (Unique List)"
          << endl
          << "Choice 7: Deletion at Head"
+         << endl
+         << "Choice 8: Deletion at Tail"
          << endl
          << "Choice 0: Exit"
          << endl
@@ -297,9 +327,15 @@ int main()
         case 7:
             deletionAtHead(head);
             break;
+        case 8:
+            deletionAtTail(head);
+            break;
         default:
             break;
         }
+
+        display(head);
+
         cout << "Next Choice: ";
         cin >> choice;
     }
