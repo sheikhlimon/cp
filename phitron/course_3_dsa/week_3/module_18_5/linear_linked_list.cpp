@@ -277,6 +277,19 @@ void deletionByValueUnique(Node *&head, int value)
     }
 }
 
+int findMid(Node *&head)
+{
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow->value;
+}
+
 int main()
 {
     Node *head = NULL;
@@ -303,6 +316,8 @@ int main()
          << "Choice 9: Deletion at specific value"
          << endl
          << "Choice 10: Deletion by value (Unique List)"
+         << endl
+         << "Choice 11: Finding the Mid (Slow-Fast Method"
          << endl
          << "Choice 0: Exit"
          << endl
@@ -398,6 +413,18 @@ int main()
             int delValue;
             cin >> delValue;
             deletionByValueUnique(head, delValue);
+            break;
+        case 11:
+            int mid;
+            mid = findMid(head);
+            if (mid == -1)
+            {
+                cout << "The ll is empty";
+            }
+            else
+            {
+                cout << "Mid value is: " << mid << endl;
+            }
             break;
         default:
             break;
