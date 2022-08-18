@@ -317,7 +317,7 @@ int main()
          << endl
          << "Choice 10: Deletion by value (Unique List)"
          << endl
-         << "Choice 11: Finding the Mid (Slow-Fast Method"
+         << "Choice 11: Finding the Mid (Slow-Fast Method)"
          << endl
          << "Choice 0: Exit"
          << endl
