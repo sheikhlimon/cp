@@ -14,6 +14,13 @@ public:
     }
 };
 
+void insertAtHead(Node *&head, int val)
+{
+    Node *newNode = new Node(val);
+    newNode->next = head;
+    head = newNode;
+}
+
 void insertAtTail(Node *&head, int val)
 {
     Node *newNode = new Node(val);
@@ -45,23 +52,44 @@ void display(Node *head)
     cout << endl;
 }
 
+Node *kReverse(Node *&head, int k)
+{
+    Node *current = head;
+    Node *next = NULL;
+    Node *prev = NULL;
+    int count = 0;
+
+    while (current != NULL && count < k)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+        count++;
+    }
+
+    if (next != NULL)
+    {
+        head->next = kReverse(next, k);
+    }
+
+    return prev;
+}
+
 int main()
 {
     Node *head = NULL;
 
-    int value;
-
-    int t;
+    int t, k, value;
     cin >> t;
     while (t--)
     {
         cin >> value;
-        if (value % 2 == 0)
-        {
-            value = -1;
-        }
         insertAtTail(head, value);
     }
+
+    cin >> k;
+    head = kReverse(head, k);
 
     display(head);
 
