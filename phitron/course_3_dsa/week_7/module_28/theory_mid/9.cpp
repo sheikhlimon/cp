@@ -14,7 +14,7 @@ int main()
     strcpy(Str1, "CSE");   // copy “CSE” to Str1
     for (i = 0; i < 3; ++i)
     {
-        Push(Str1[i]); // push all characters one by one
+        Push(Str1[i]); // push all characters one by one into Str1
     }
     for (i = 0; i < 3; ++i)
     {
