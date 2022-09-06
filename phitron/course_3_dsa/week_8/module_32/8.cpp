@@ -1,36 +1,36 @@
-// C++ program to find averages of all levels
-// in a binary tree.
 #include <bits/stdc++.h>
 using namespace std;
 
 /* A binary tree node has data, pointer to
    left child and a pointer to right child */
-struct Node
-{
+class Node {
+  public:
     int val;
-    struct Node *left, *right;
+    Node *left, *right;
+    Node(int value) {
+        val = value;
+        left = NULL;
+        right = NULL;
+    }
 };
 
 /* Function to print the average value of the
    nodes on each level */
-void averageOfLevels(Node *root)
-{
+void averageOfLevels(Node *root) {
     vector<float> res;
 
     // Traversing level by level
     queue<Node *> q;
     q.push(root);
 
-    while (!q.empty())
-    {
+    while (!q.empty()) {
 
         // Compute sum of nodes and
         // count of nodes in current
         // level.
         int sum = 0, count = 0;
         queue<Node *> temp;
-        while (!q.empty())
-        {
+        while (!q.empty()) {
             Node *n = q.front();
             q.pop();
             sum += n->val;
@@ -48,8 +48,7 @@ void averageOfLevels(Node *root)
 /* Helper function that allocates a
    new node with the given data and
    NULL left and right pointers. */
-Node *newNode(int data)
-{
+Node *newNode(int data) {
     Node *temp = new Node;
     temp->val = data;
     temp->left = temp->right = NULL;
@@ -57,8 +56,7 @@ Node *newNode(int data)
 }
 
 // Driver code
-int main()
-{
+int main() {
     /* Let us construct a Binary Tree
         4
        / \

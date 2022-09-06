@@ -1,14 +1,12 @@
-// C++ code to implement the above approach
-
 #include <bits/stdc++.h>
 using namespace std;
 
-// Structure of a tree node
-struct Node
+class Node
 {
+public:
     int data;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
     Node(int val)
     {
         data = val;
@@ -62,7 +60,7 @@ int main()
     // 2   5
     //          / \
     // 5   7
-    struct Node *root = new Node(2);
+    Node *root = new Node(2);
     root->left = new Node(2);
     root->right = new Node(5);
     root->right->left = new Node(5);
