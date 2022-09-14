@@ -29,7 +29,7 @@ void inOrder(treeNode *root, string &chk) // root left right
         return;
     }
     inOrder(root->leftChild, chk);
-    chk += to_string(root->data);
+    chk += (to_string(root->data) + " ");
     inOrder(root->rightChild, chk);
 }
 
@@ -98,67 +98,48 @@ void spacePrint(int level)
     }
 }
 
+treeNode *insertionBST(treeNode *root, int value)
+{
+    treeNode *newNode = new treeNode(value);
+
+    if (root == NULL)
+    {
+        root = newNode;
+        return root;
+    }
+
+    // value < root->data
+    if (value < root->data)
+    {
+        root->leftChild = insertionBST(root->leftChild, value);
+    }
+
+    // value> root -> data
+    else if (value > root->data)
+    {
+        root->rightChild = insertionBST(root->rightChild, value);
+    }
+
+    return root;
+}
+
 int main()
 {
     int n;
     cin >> n;
-    treeNode *allNodes[n];
+    treeNode *root = NULL;
 
     for (int i = 0; i < n; i++)
     {
-        allNodes[i] = new treeNode(-1);
+        int value;
+        cin >> value;
+        root = insertionBST(root, value);
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        int value, left, right;
-        cin >> value >> left >> right;
-        allNodes[i]->data = value;
-
-        if (left > n - 1 || right > n - 1)
-        {
-            cout << "Invalid Index" << endl;
-            break;
-        }
-
-        if (left != -1)
-        {
-            allNodes[i]->leftChild = allNodes[left];
-        }
-
-        if (right != -1)
-        {
-            allNodes[i]->rightChild = allNodes[right];
-        }
-    }
-
-    printTree(allNodes[0], 0);
-    cout << endl;
-
-    string inOrderTraversal = "";
-    string preOrderTraversal = "";
-    string postOrderTraversal = "";
-
-    inOrder(allNodes[0], inOrderTraversal);
-    preOrder(allNodes[0], preOrderTraversal);
-    postOrder(allNodes[0], postOrderTraversal);
-
-    cout << "InOrder Traversal: " << inOrderTraversal << endl;
-    cout << "PreOrder Traversal: " << preOrderTraversal << endl;
-    cout << "PostOrder Traversal: " << postOrderTraversal << endl;
+    string traversal = "";
+    inOrder(root, traversal);
+    cout << "\n"
+         << traversal;
 
     return 0;
 }
-
-/*
-9
-0 1 2
-1 3 4
-2 5 6
-3 -1 -1
-4 -1 -1
-5 7 8
-6 -1 -1
-7 -1 -1
-8 -1 -1
-*/

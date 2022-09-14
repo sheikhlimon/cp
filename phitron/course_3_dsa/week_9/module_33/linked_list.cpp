@@ -100,7 +100,11 @@ void deleteAtTail(Node *&head)
     {
         temp = temp->next;
     }
+
+    // make the next of temp null
     temp->next = NULL;
+
+    // delete temp next
     delete temp->next;
 }
 
