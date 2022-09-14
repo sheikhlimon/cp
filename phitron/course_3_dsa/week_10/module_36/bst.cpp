@@ -16,111 +16,56 @@ public:
     }
 };
 
-void printTree(treeNode *root, int level);
-void spacePrint(int level);
-void inOrder(treeNode *root, string &chk);
-void preOrder(treeNode *root, string &chk);
-void postOrder(treeNode *root, string &chk);
-
-void inOrder(treeNode *root, string &chk) // root left right
+void inOrder(treeNode *root) // root left right
 {
     if (root == NULL)
     {
         return;
     }
-    inOrder(root->leftChild, chk);
-    chk += (to_string(root->data) + " ");
-    inOrder(root->rightChild, chk);
+    inOrder(root->leftChild);
+    cout << root->data << " ";
+    inOrder(root->rightChild);
 }
 
-void preOrder(treeNode *root, string &chk) // root left right
+void insertionBST(treeNode *&root, int value)
 {
     if (root == NULL)
     {
+        root = new treeNode(value);
         return;
-    }
-    chk += to_string(root->data);
-    preOrder(root->leftChild, chk);
-    preOrder(root->rightChild, chk);
-}
-
-void postOrder(treeNode *root, string &chk) // left right root
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    postOrder(root->leftChild, chk);
-    postOrder(root->rightChild, chk);
-    chk += to_string(root->data);
-}
-
-void printTree(treeNode *root, int level)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-
-    if (root->leftChild == NULL && root->rightChild == NULL)
-    {
-        cout << root->data << endl;
-        return;
-    }
-
-    else
-    {
-        cout << endl;
-        spacePrint(level);
-        cout << "Root: " << root->data << endl;
-    }
-
-    if (root->leftChild != NULL)
-    {
-        spacePrint(level);
-        cout << "Left: ";
-        printTree(root->leftChild, level + 1);
-    }
-
-    if (root->rightChild != NULL)
-    {
-        spacePrint(level);
-        cout << "Right: ";
-        printTree(root->rightChild, level + 1);
-    }
-}
-
-void spacePrint(int level)
-{
-    for (int i = 0; i < level; i++)
-    {
-        cout << "   ";
-    }
-}
-
-treeNode *insertionBST(treeNode *root, int value)
-{
-    treeNode *newNode = new treeNode(value);
-
-    if (root == NULL)
-    {
-        root = newNode;
-        return root;
     }
 
     // value < root->data
     if (value < root->data)
     {
-        root->leftChild = insertionBST(root->leftChild, value);
+        insertionBST(root->leftChild, value);
     }
 
-    // value> root -> data
-    else if (value > root->data)
+    // value > root -> data
+    else
     {
-        root->rightChild = insertionBST(root->rightChild, value);
+        insertionBST(root->rightChild, value);
     }
+}
 
-    return root;
+void levelOrder(treeNode *root)
+{
+    queue<treeNode *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        treeNode *root = q.front();
+        q.pop();
+        cout << root->data << endl;
+        if (root->leftChild != NULL)
+        {
+            q.push(root->leftChild);
+        }
+        if (root->rightChild != NULL)
+        {
+            q.push(root->rightChild);
+        }
+    }
 }
 
 int main()
@@ -133,13 +78,10 @@ int main()
     {
         int value;
         cin >> value;
-        root = insertionBST(root, value);
+        insertionBST(root, value);
     }
 
-    string traversal = "";
-    inOrder(root, traversal);
-    cout << "\n"
-         << traversal;
+    levelOrder(root);
 
     return 0;
 }
