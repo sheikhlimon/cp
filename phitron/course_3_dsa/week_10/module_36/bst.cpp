@@ -27,25 +27,37 @@ void inOrder(treeNode *root) // root left right
     inOrder(root->rightChild);
 }
 
-void insertionBST(treeNode *&root, int value)
+// treeNode *insertionBST(int l, int r, int a[])
+// {
+//     if (l > r)
+//     {
+//         return NULL;
+//     }
+
+//     int mid = l + (r - l) / 2;
+//     treeNode *newNode = new treeNode(a[mid]);
+//     newNode->leftChild = insertionBST(l, mid - 1, a);
+//     newNode->rightChild = insertionBST(mid + 1, r, a);
+//     return newNode;
+// }
+
+treeNode *insertionBST(treeNode *root, int value)
 {
     if (root == NULL)
     {
-        root = new treeNode(value);
-        return;
+        treeNode *newNode = new treeNode(value);
+        return newNode;
     }
 
-    // value < root->data
     if (value < root->data)
     {
-        insertionBST(root->leftChild, value);
+        root->leftChild = insertionBST(root->leftChild, value);
     }
-
-    // value > root -> data
     else
     {
-        insertionBST(root->rightChild, value);
+        root->rightChild = insertionBST(root->rightChild, value);
     }
+    return root;
 }
 
 void levelOrder(treeNode *root)
@@ -56,7 +68,7 @@ void levelOrder(treeNode *root)
     {
         treeNode *root = q.front();
         q.pop();
-        cout << root->data << endl;
+        cout << root->data << " ";
         if (root->leftChild != NULL)
         {
             q.push(root->leftChild);
@@ -68,6 +80,30 @@ void levelOrder(treeNode *root)
     }
 }
 
+treeNode *searchBST(treeNode *root, int value)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->data == value)
+    {
+        cout << root->data;
+        return root;
+    }
+    else if (value < root->data)
+    {
+        cout << root->data << " -> ";
+        searchBST(root->leftChild, value);
+    }
+    else
+    {
+        cout << root->data << " -> ";
+        searchBST(root->rightChild, value);
+    }
+    return root;
+}
+
 int main()
 {
     int n;
@@ -76,12 +112,30 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        int value;
-        cin >> value;
-        insertionBST(root, value);
+        int a;
+        cin >> a;
+        root = insertionBST(root, a);
     }
 
-    levelOrder(root);
+    inOrder(root);
+
+    int key;
+    cin >> key;
+    if (searchBST(root, key) == NULL)
+    {
+        cout << endl
+             << "Value does not exist in the BST";
+    }
+    else
+    {
+        cout << endl
+             << "Value exists in the BST";
+    }
 
     return 0;
 }
+
+/*
+9
+11 5 9 43 34 1 2 7 21
+*/
