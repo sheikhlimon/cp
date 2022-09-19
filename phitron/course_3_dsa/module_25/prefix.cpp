@@ -111,7 +111,7 @@ int prefixEvaluation(string chk)
 
 int main()
 {
-    string infix = "(7+(4*5))-(2+0)";
+    string infix = "(5*((6^2)+(7-(2/6))))-((7*(8+1))+(5*4))";
     string prefix;
     prefix = infixToPrefix(infix);
     cout << endl
