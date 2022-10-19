@@ -3,19 +3,19 @@ using namespace std;
 
 int main()
 {
-    int size;
+    int sz;
     cout << "Size : ";
-    cin >> size;
+    cin >> sz;
     //int arr[size];
-    int *arr = new int[size];
+    int *arr = new int[sz];
 
-    for (int i = 1; i <= size; i++)
+    for (int i = 1; i <= sz; i++)
     {
         cout << "arr[" << i << "] ";
         cin >> arr[i];
     }
 
-    for (int i = 1; i <= size; i++)
+    for (int i = 1; i <= sz; i++)
     {
         cout << arr[i] << " ";
     }
